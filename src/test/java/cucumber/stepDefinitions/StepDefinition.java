@@ -26,10 +26,14 @@ public class StepDefinition {
 
     private final String BASE_PATH = "http://auto.am";
 
+    static {
+        //set your local system path to driver
+        System.setProperty("webdriver.chrome.driver", "C://QA/chromedriver.exe");
+    }
+
 
     @Given("Go to auto.am page")
     public void go_to_auto_am_page() {
-        System.setProperty("webdriver.chrome.driver", "C://QA/chromedriver.exe");
         webDriver.get(BASE_PATH);
         webDriver.manage().window().maximize();
         actions = new ActionsImpl(webDriver);
@@ -39,7 +43,6 @@ public class StepDefinition {
     @When("Entering values in the combo boxes")
     public void entering_values_in_the_combo_boxes() {
         actions.testConnection();
-
     }
 
     @When("Selecting index of upper bound taking all prices")

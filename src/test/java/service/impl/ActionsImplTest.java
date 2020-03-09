@@ -23,6 +23,7 @@ public class ActionsImplTest {
 
     @BeforeClass
     public static void setUp() {
+        //set your local system path to driver
         System.setProperty("webdriver.chrome.driver", "C://QA/chromedriver.exe");
     }
 
