@@ -69,11 +69,10 @@ public class ActionsImpl implements Actions {
             totalCount = Integer.parseInt(matcher.group());
         }
         WebElement searchResult = webDriver.findElement(By.xpath("//*[@id='search-result']"));
-        WebElement pagination = webDriver.findElement(By.xpath("//ul[@class='pagination center']"));
-
         int actualCount = 0;
-        int countOfPages = pagination.findElements(By.xpath(".//li")).size() - 2;
-        for (int i = 0; i <= countOfPages; i++) {
+        final int ITEMS_PER_PAGE = 50;
+        int countOfPages = totalCount <= ITEMS_PER_PAGE ? 1 : totalCount / ITEMS_PER_PAGE + 1 ;
+        for (int i = 0; i < countOfPages; i++) {
             new WebDriverWait(webDriver, 40)
                     .until(ExpectedConditions.elementToBeClickable(By.xpath("//i[contains(text(),'chevron_right')]")))
                     .click();

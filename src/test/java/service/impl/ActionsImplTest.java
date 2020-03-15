@@ -18,7 +18,6 @@ public class ActionsImplTest {
 
     private WebDriver webDriver = new ChromeDriver();
     private Actions actions;
-
     private final String BASE_PATH = "http://auto.am";
 
     @BeforeClass
@@ -45,19 +44,17 @@ public class ActionsImplTest {
         int upperBound = selectedIndex * 1000;
         List<Integer> integers = actions.checkBoundOfAmount(selectedIndex);
         Integer max = Collections.max(integers);
-
         assertTrue(upperBound >= max);
     }
 
     @Test
     public void searchWithAudi() {
         int[] ints = actions.searchWithAudi();
-
         assertEquals(ints[0], ints[1]);
     }
 
     @After
     public void close() {
-        webDriver.close();
+        webDriver.quit();
     }
 }

@@ -5,8 +5,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "classpath:features",
-        glue = "cucumber.stepDefinitions",
+@CucumberOptions(features = "classpath:features/auto.feature",
+        glue = "cucumber.stepDefinitions.gherkin",
         plugin = {"timeline:target/reportsTestNG"},
         tags = {"@all"},
         strict = true,
