@@ -71,12 +71,12 @@ public class ActionsImpl implements Actions {
         WebElement searchResult = webDriver.findElement(By.xpath("//*[@id='search-result']"));
         int actualCount = 0;
         final int ITEMS_PER_PAGE = 50;
-        int countOfPages = totalCount <= ITEMS_PER_PAGE ? 1 : totalCount / ITEMS_PER_PAGE + 1 ;
+        int countOfPages = totalCount <= ITEMS_PER_PAGE ? 1 : totalCount / ITEMS_PER_PAGE + 1;
         for (int i = 0; i < countOfPages; i++) {
+            actualCount += searchResult.findElements(By.xpath(".//div[@class='card-content']")).size();
             new WebDriverWait(webDriver, 40)
                     .until(ExpectedConditions.elementToBeClickable(By.xpath("//i[contains(text(),'chevron_right')]")))
                     .click();
-            actualCount += searchResult.findElements(By.xpath(".//div[@class='card-content']")).size();
         }
         int[] results = new int[2];
         results[0] = totalCount;
