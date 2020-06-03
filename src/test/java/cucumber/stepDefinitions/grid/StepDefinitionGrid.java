@@ -69,8 +69,8 @@ public class StepDefinitionGrid {
     private WebDriver getRemoteWebDriver() {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         //use your hub ip
-        String hubUrl = "http://192.168.0.105:4444/wd/hub";
-        WebDriver webDriver = null;
+        String hubUrl = "http://172.27.200.9:5555/wd/hub";
+        //WebDriver webDriver = null;
         try {
             webDriver = new RemoteWebDriver(new URL(hubUrl), capabilities);
         } catch (MalformedURLException e) {
